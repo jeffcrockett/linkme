@@ -1,0 +1,47 @@
+<html>
+<head>
+  {% load static %}
+  <link rel="stylesheet" href = {% static "first_app/styles.css" %}>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+
+</head>
+<body>
+
+  <button class="w3-button"><a href="back"> Go back </a></button>
+
+
+
+
+
+
+<table class="w3-table"><tr><td><h1>Linker</h1>
+<form action="link" method="POST">
+  {% csrf_token %}
+  <input class="w3-input w3-animate-opacity" type="text" name="actor1" isActor = "True" placeholder="Link Actor A">
+    <input class="w3-input w3-animate-opacity" type="text" name="actor2" isActor = "True" placeholder="to Actor B">
+
+
+  <hr>
+    <input class="w3-input" type="submit" value="submit">
+  </form>
+</td><td>{% if movies %}
+{% for movie in movies %}
+<h3>{{movie}}<h3>
+{% endfor %}
+{% endif %}</td></tr>
+</table>
+{% if context %}
+<div class="w3-container">
+<h1>{{context}}!</h1>
+</div>
+{% endif %}
+{% if error %}
+<h1>{{error}}</h1>
+{% endif %}
+
+</body>
+</html>
